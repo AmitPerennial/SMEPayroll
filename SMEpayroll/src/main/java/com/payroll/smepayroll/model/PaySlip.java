@@ -24,6 +24,7 @@ public class PaySlip {
     private double hra;
     @Column(name="Allowances")
     private double allowances;
+
     //private List<Allowance> allowances;
 
     public PaySlip() {
