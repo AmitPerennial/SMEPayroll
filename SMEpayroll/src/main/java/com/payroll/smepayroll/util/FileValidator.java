@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface FileValidator {
 
-    List<ErrorBean> validateAndSaveExcelDataToDb(List<List<String>> employeeEntityList) throws ParseException;
+    List<ErrorBean> validateAndSaveExcelDataToDb(List<List<String>> employeeEntityList);
+
+    List<ErrorBean> validateAndSavePayslipDataToDb(List<List<String>> payslipEntityList);
 }

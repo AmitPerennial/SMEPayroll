@@ -8,11 +8,13 @@ public class PaySlip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="Empid")
+    @Column(name="id")
     private int id;
 
     @Column(name="Empname")
     private String empname;
+    @Column(name = "Empid")
+    private int empid;
     @Column(name="Monthandyear")
     private String monthAndYear;
     @Column(name="Totaldaysinmonth")
@@ -27,19 +29,29 @@ public class PaySlip {
     private double allowances;
     //private List<Allowance> allowances;
 
+
     public PaySlip() {
     }
 
-    public PaySlip(int id, String empname, String monthAndYear, int totalDaysInMonth, int totalPayableDays,
-                   double basic, double hra, double allowances) {
+    public PaySlip(int id, String empname, int empid, String monthAndYear,
+                   int totalDaysInMonth, int totalPayableDays, double basic, double hra, double allowances) {
         this.id = id;
         this.empname = empname;
+        this.empid = empid;
         this.monthAndYear = monthAndYear;
         this.totalDaysInMonth = totalDaysInMonth;
         this.totalPayableDays = totalPayableDays;
         this.basic = basic;
         this.hra = hra;
         this.allowances = allowances;
+    }
+
+    public int getEmpid() {
+        return empid;
+    }
+
+    public void setEmpid(int empid) {
+        this.empid = empid;
     }
 
     public int getId() {

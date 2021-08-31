@@ -41,11 +41,12 @@ public class FileUploadServiceImpl implements FileUploadService{
             }
             XSSFSheet sheet = workbook.getSheetAt(0);
 
-            int rows = sheet.getPhysicalNumberOfRows();
-            for (int r = 1; r < rows-1; r++) {
+            int rows = sheet.getLastRowNum();
+            int columns=sheet.getRow(1).getLastCellNum();
+            for (int r = 1; r < rows; r++) {
                 Row currentRow = sheet.getRow(r);
                 List<String> fileList = new ArrayList<>();
-                for (int col = 0; col < 10; col++) {
+                for (int col = 0; col < columns; col++) {
                     Cell cell = currentRow.getCell(col);
                     String excelFileData = formatter.formatCellValue(cell);
                     fileList.add(excelFileData);
