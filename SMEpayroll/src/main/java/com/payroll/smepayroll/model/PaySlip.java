@@ -10,6 +10,7 @@ public class PaySlip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Empid")
     private int id;
+
     @Column(name="Empname")
     private String empname;
     @Column(name="Monthandyear")
@@ -24,7 +25,6 @@ public class PaySlip {
     private double hra;
     @Column(name="Allowances")
     private double allowances;
-
     //private List<Allowance> allowances;
 
     public PaySlip() {
