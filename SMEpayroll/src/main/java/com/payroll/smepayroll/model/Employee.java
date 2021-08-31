@@ -11,6 +11,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Empid")
     private int empid;
+
     @Column(name="Empname")
     private String empname;
     @Column(name="Designation")

@@ -37,11 +37,21 @@ public class EmployeeController {
         return employeeService.saveEmployee();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/empdetail",method = RequestMethod.POST)
     public ResponseEntity<ResponseModel<?>> uploadEmployeeDetailsFileToDb(@RequestParam("File") MultipartFile multipartFile) throws IOException, ParseException {
 
         List<List<String>> employeeEntityList = fileUploadService.parseExcelFile(multipartFile);
         List<ErrorBean> resultBean = fileValidator.validateAndSaveExcelDataToDb(employeeEntityList);
+        final ResponseModel<?> responseModel = new ResponseModel<>(HttpStatus.OK.value(),
+                "File is Successfully Uploaded and Result is: ", resultBean);
+        return new ResponseEntity<>(responseModel, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/payslipdata" ,method = RequestMethod.POST)
+    public ResponseEntity<ResponseModel<?>> uploadPayslipDetailsFileToDb(@RequestParam("File") MultipartFile multipartFile) throws IOException, ParseException {
+
+        List<List<String>> payslipEntityList = fileUploadService.parseExcelFile(multipartFile);
+        List<ErrorBean> resultBean = fileValidator.validateAndSavePayslipDataToDb(payslipEntityList);
         final ResponseModel<?> responseModel = new ResponseModel<>(HttpStatus.OK.value(),
                 "File is Successfully Uploaded and Result is: ", resultBean);
         return new ResponseEntity<>(responseModel, HttpStatus.OK);
